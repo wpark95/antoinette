@@ -1,21 +1,30 @@
 import React from 'react';
-// import axios from 'axios';
+
+import {
+  Switch,
+  Route,
+} from 'react-router-dom';
+import LandingPage from './LandingPage';
+import ImageMain from './imageMode/ImageMain';
+import TextMain from './textMode/TextMain';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedMode: '',
     };
-  };
+  }
 
   render() {
-
     return (
-      <div id="components">
-		    <h1>Test001</h1>
-      </div>
+      <Switch>
+        <Route path="/imagemode" component={ImageMain} />
+        <Route path="/textmode" component={TextMain} />
+        <Route exact path="/" component={LandingPage} />
+      </Switch>
     );
-  };
-};
+  }
+}
 
 export default App;

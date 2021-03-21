@@ -4,8 +4,8 @@
   "description": "Alejandro's daughter",
   "main": "index.js",
   "scripts": {
-    "react:dev": "webpack --watch",
-    "server:dev": "nodemon ./server/server.js"
+    "react-dev": "webpack --watch --config webpack.config.js",
+    "server-dev": "nodemon ./server/server.js"
   },
   "repository": {
     "type": "git",
@@ -19,21 +19,27 @@
   "homepage": "https://github.com/wpark95/antoinette#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "babel-loader": "^8.2.2",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "eslint": "^7.20.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
-    "@babel/core": "^7.13.1",
-    "@babel/preset-env": "^7.13.5",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
-    "webpack": "^5.24.1",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "webpack": "^5.24.3",
     "webpack-cli": "^4.5.0"
   }
 }
