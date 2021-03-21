@@ -12,14 +12,14 @@
 
 ## Getting Started
 
-- To **Install Required Dependencies** :
+- To **install required dependencies** :
   - **npm install**
 
-- To compile the client bundle using **Webpack** :
-  - **npm run react:dev**
+- To **compile the client bundle** using **Webpack** :
+  - **npm run react-dev**
 
-- To start the server using **Nodemon** :
-  - **npm run server:dev**
+- To **start the server** using **Nodemon** :
+  - **npm run server-dev**
     - Note: By default, the server is set to use **port 3000**
 
 

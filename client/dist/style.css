@@ -1,0 +1,51 @@
+/* ##########Landing Page########## */
+
+
+
+#landing-image {
+    min-width: 50%;
+    min-height: 50%;
+}
+
+
+
+#components {
+    display: flex;
+    flex-direction: column;
+}
+
+#logo {
+    max-width: 70%;
+    max-height: 70%;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    max-height: 25vh;
+    background-color: rgb(61, 75, 80);
+    color: white;
+}
+
+.nav-list {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    padding-right: 20px;
+}
+
+
+#landing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* Header Links Color */
+li {
+    color: white;
+}
