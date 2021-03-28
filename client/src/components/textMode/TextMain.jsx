@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
+  Route, Link, Switch,
 } from 'react-router-dom';
 // import axios from 'axios';
 import Header from '../Header';
@@ -19,7 +17,11 @@ class TextMain extends React.Component {
       <div>
         <Header />
         <h1>Text Main</h1>
+        <Link to="textmode/create">
+          <button>Create Game!</button>
+        </Link>
       </div>
+
     );
   }
 }

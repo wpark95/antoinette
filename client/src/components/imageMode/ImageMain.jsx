@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -23,11 +22,6 @@ class ImageMain extends React.Component {
       <div>
         <Header />
         <h1>Image Main</h1>
-        <ul>
-          <li>
-            <button>Create Game</button>
-          </li>
-        </ul>
       </div>
 
     );
