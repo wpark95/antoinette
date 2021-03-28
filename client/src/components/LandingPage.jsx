@@ -15,6 +15,9 @@ class LandingPage extends React.Component {
     return (
       <div>
         <Link to="/imagemode">
+          <img src="./landingPage.png" alt="" />
+        </Link>
+        <Link to="/imagemode">
           <img src="./imageMode.png" alt="" />
         </Link>
         <Link to="/textmode">
