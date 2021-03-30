@@ -14,7 +14,7 @@
 - To **install required dependencies** :
   - **npm install**
 
-- To **bundle JavaScript** using **Webpack** :
+- To **bundle JavaScript** files using **Webpack** :
   - **npm run react-dev**
 
 - To **start the server** using **Nodemon** :
