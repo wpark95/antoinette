@@ -3,10 +3,9 @@
 **Antoinette** is a web application that allows users to create consensus for entertainment
 
 
-## Technologies
+## This Application Uses
 
-> This application is created with :
-- **React.js / React DOM**    v17.0.1
+- **NPM**    v6.14.4
 - **Node.js**    v14.15.5
 
 
@@ -15,7 +14,7 @@
 - To **install required dependencies** :
   - **npm install**
 
-- To **compile the client bundle** using **Webpack** :
+- To **bundle JavaScript** using **Webpack** :
   - **npm run react-dev**
 
 - To **start the server** using **Nodemon** :
