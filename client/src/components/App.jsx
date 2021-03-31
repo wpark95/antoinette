@@ -1,31 +1,25 @@
 import React from 'react';
-
 import {
-  Switch,
+  BrowserRouter as Router,
   Route,
+  Switch,
 } from 'react-router-dom';
 import LandingPage from './LandingPage';
-import ImageMain from './imageMode/ImageMain';
 import TextMain from './textMode/TextMain';
-import CreateTextGame from './textMode/CreateTextGame';
+import ImageMain from './imageMode/ImageMain';
+import CreateGame from './textMode/CreateTextGame';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
+const app = () => (
+  <Router>
+    <div className="App">
       <Switch>
-        <Route exact path="/textmode/create" component={CreateTextGame} />
-        <Route path="/imagemode" component={ImageMain} />
+        <Route path="/textmode/create" component={CreateGame} />
         <Route path="/textmode" component={TextMain} />
-        <Route exact path="/" component={LandingPage} />
+        <Route path="/imagemode" component={ImageMain} />
+        <Route path="/" component={LandingPage} />
       </Switch>
-    );
-  }
-}
+    </div>
+  </Router>
+);
 
-export default App;
+export default app;

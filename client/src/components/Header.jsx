@@ -1,35 +1,31 @@
 import React from 'react';
 // import axios from 'axios';
 import {
-  Link,
+  NavLink,
 } from 'react-router-dom';
 
-class LandingPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+const header = () => (
+  <div>
+    <nav>
+      <ul className="nav-list">
+        <li>
+          <NavLink to="/">
+            <img id="logo" src="/anlogo.png" alt="" />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/imagemode">
+            Image Mode
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/textmode">
+            Text Mode
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        <nav>
-          <ul className="nav-list">
-            <Link to="/">
-              <img id="logo" src="anlogo.png" alt="" />
-            </Link>
-            <Link to="/imagemode">
-              <li>Image Mode</li>
-            </Link>
-            <Link to="/textmode">
-              <li>Text Mode</li>
-            </Link>
-          </ul>
-        </nav>
-      </div>
-    );
-  }
-}
-
-export default LandingPage;
+export default header;
