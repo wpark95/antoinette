@@ -4,38 +4,28 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+const header = () => (
+  <div>
+    <nav>
+      <ul className="nav-list">
+        <li>
+          <NavLink to="/">
+            <img id="logo" src="/anlogo.png" alt="" />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/imagemode">
+            Image Mode
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/textmode">
+            Text Mode
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        <nav>
-          <ul className="nav-list">
-            <li>
-              <NavLink to="/">
-                <img id="logo" src="/anlogo.png" alt="" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/imagemode">
-                Image Mode
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/textmode">
-                Text Mode
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    );
-  }
-}
-
-export default Header;
+export default header;

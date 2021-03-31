@@ -3,7 +3,7 @@ import {
   Link,
 } from 'react-router-dom';
 
-const LandingPage = () => (
+const landingPage = () => (
   <div>
     <Link to="/imagemode">
       <img src="./landingPage.png" alt="" />
@@ -17,4 +17,4 @@ const LandingPage = () => (
   </div>
 );
 
-export default LandingPage;
+export default landingPage;
