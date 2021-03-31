@@ -1,13 +1,13 @@
 import React from 'react';
-
 import {
-  Switch,
+  BrowserRouter as Router,
   Route,
+  Switch,
 } from 'react-router-dom';
 import LandingPage from './LandingPage';
-import ImageMain from './imageMode/ImageMain';
 import TextMain from './textMode/TextMain';
-import CreateTextGame from './textMode/CreateTextGame';
+import ImageMain from './imageMode/ImageMain';
+import CreateGame from './textMode/CreateTextGame';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,12 +18,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/textmode/create" component={CreateTextGame} />
-        <Route path="/imagemode" component={ImageMain} />
-        <Route path="/textmode" component={TextMain} />
-        <Route exact path="/" component={LandingPage} />
-      </Switch>
+      <Router>
+        <div className="App">
+
+          <Switch>
+            <Route path="/textmode/create" component={CreateGame} />
+            <Route path="/textmode" component={TextMain} />
+            <Route path="/imagemode" component={ImageMain} />
+            <Route path="/" component={LandingPage} />
+
+          </Switch>
+
+        </div>
+      </Router>
+
     );
   }
 }
