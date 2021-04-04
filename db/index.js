@@ -1,27 +1,27 @@
-// const { Client } = require('pg');
-// require('dotenv').config();
+const { Client, Pool } = require('pg');
+require('dotenv').config();
 
-// const host = process.env.DB_HOST;
-// const password = process.env.DB_PW;
+const devDBUser = process.env.DB_DEV_USER;
+const devDBPassword = process.env.DB_DEV_PW;
+const devDBHost = process.env.DB_DEV_HOST;
+const devDBDatabase = process.env.DB_DEV_DB;
 
-// const { Pool } = require('pg');
+const pool = new Pool({
+  user: devDBUser,
+  password: devDBPassword,
+  host: devDBHost,
+  database: devDBDatabase,
+});
 
-// const pool = new Pool({
-//   user: 'postgres',
-//   password,
-//   host,
-//   database: 'antoinette',
-// });
+// the pool will emit an error on behalf of any idle clients
+// it contains if a backend error or network partition happens
+pool.on('error', (err, client) => {
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
+});
+pool.on('connect', () => {
+  // pool.query('SET search_path TO sdc;');
+  console.log(`Connected to PostgreSQL. Host: ${devDBHost}`);
+});
 
-// // the pool will emit an error on behalf of any idle clients
-// // it contains if a backend error or network partition happens
-// pool.on('error', (err, client) => {
-//   console.error('Unexpected error on idle client', err);
-//   process.exit(-1);
-// });
-// pool.on('connect', () => {
-//   // pool.query('SET search_path TO sdc;');
-//   console.log(`Connected to PostgreSQL. Host: ${host}`);
-// });
-
-// module.exports.pool = pool;
+module.exports.pool = pool;

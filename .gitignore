@@ -14,4 +14,4 @@ node_modules
 .env
 
 # .sql Files
-postgres.sql
+DB_DEV_PW
