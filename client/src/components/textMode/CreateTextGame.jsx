@@ -6,27 +6,43 @@ class CreateGame extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      textOne: '',
-      textTwo: '',
+      username: '',
+      title: '',
+      leftgame: '',
+      rightgame: '',
     };
     this.sendInputDataOnSubmit = this.sendInputDataOnSubmit.bind(this);
-    this.textOneKeyPressHandler = this.textOneKeyPressHandler.bind(this);
-    this.textTwoKeyPressHandler = this.textTwoKeyPressHandler.bind(this);
+    this.titleInputHandler = this.titleInputHandler.bind(this);
+    this.usernameInputHandler = this.usernameInputHandler.bind(this);
+    this.leftGameKeyPressHandler = this.leftGameKeyPressHandler.bind(this);
+    this.rightGameKeyPressHandler = this.rightGameKeyPressHandler.bind(this);
   }
 
-  textOneKeyPressHandler(e) {
-    this.setState({ textOne: e.target.value });
+  usernameInputHandler(e) {
+    this.setState({ username: e.target.value });
   }
 
-  textTwoKeyPressHandler(e) {
-    this.setState({ textTwo: e.target.value });
+  titleInputHandler(e) {
+    this.setState({ title: e.target.value });
+  }
+
+  leftGameKeyPressHandler(e) {
+    this.setState({ leftgame: e.target.value });
+  }
+
+  rightGameKeyPressHandler(e) {
+    this.setState({ rightgame: e.target.value });
   }
 
   sendInputDataOnSubmit() {
-    const { textOne, textTwo } = this.state;
-    axios.post('/test/textinput', {
-      textOne,
-      textTwo,
+    const {
+      username, title, leftgame, rightgame,
+    } = this.state;
+    axios.post('/textmode/create', {
+      username,
+      title,
+      leftgame,
+      rightgame,
     })
       .then((res) => {
         console.log(res);
@@ -34,14 +50,6 @@ class CreateGame extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-    this.clearInputBox();
-  }
-
-  clearInputBox() {
-    this.setState({
-      textOne: '',
-      textTwo: '',
-    });
   }
 
   render() {
@@ -49,9 +57,16 @@ class CreateGame extends React.Component {
       <div>
         <Header />
         <h1>Create Text Game</h1>
-        <input type="textOne" onChange={this.textOneKeyPressHandler} />
+        <h2>제목을 넣어야지 이 친구야!</h2>
+        <input type="title" onChange={this.titleInputHandler} />
+        <h2>USERNAME</h2>
+        <input type="username" onChange={this.usernameInputHandler} />
         <br />
-        <input type="textTwo" onChange={this.textTwoKeyPressHandler} />
+        <h2>LEFT GAME</h2>
+        <input type="leftGame" onChange={this.leftGameKeyPressHandler} />
+        <br />
+        <h2>RIGHT GAME</h2>
+        <input type="rightGame" onChange={this.rightGameKeyPressHandler} />
         <input
           type="button"
           value="Submit"

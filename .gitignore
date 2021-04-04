@@ -15,3 +15,5 @@ node_modules
 
 # .sql Files
 DB_DEV_PW
+postgres.sql
+.csv

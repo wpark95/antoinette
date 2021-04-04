@@ -45,6 +45,6 @@ ALTER TABLE tags ADD PRIMARY KEY (tagId);
 
 CREATE INDEX comments_postId_idx ON comments (postId);
 
-CREATE INDEX tags_postId_idx ON tags (tagId);
+CREATE INDEX tags_postId_idx ON tags (tagId); 
 
 CREATE INDEX posts_paddedId_idx ON posts (paddedId);
