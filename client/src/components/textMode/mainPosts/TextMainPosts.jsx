@@ -23,6 +23,7 @@ class TextMainPosts extends React.Component {
     axios
       .get(`/textmode/${sortBy}`)
       .then(({ data }) => {
+        console.log(data);
         this.setState({
           dataSix: data,
         });

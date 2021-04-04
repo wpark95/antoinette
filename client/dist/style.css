@@ -1,12 +1,6 @@
-/* ##########Landing Page########## */
 .App {
     background-color: seagreen;
-}
-
-
-#landing-image {
-    min-width: 50%;
-    min-height: 50%;
+    display: flex;
 }
 
 
