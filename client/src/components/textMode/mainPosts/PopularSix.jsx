@@ -12,6 +12,6 @@ const PopularSix = ({ data }) => {
     </li>
   ));
 
-  return <ul>{eachItem}</ul>;
+  return <ul id="popular-six-ul">{eachItem}</ul>;
 };
 export default PopularSix;

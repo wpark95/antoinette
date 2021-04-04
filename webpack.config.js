@@ -14,14 +14,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$|jsx/,
+
         exclude: /(node_modules|bower_components)/,
+
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
           },
         },
+      }, {
+        test: /\.css$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
       },
     ],
   },

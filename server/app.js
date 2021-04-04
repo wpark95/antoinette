@@ -12,7 +12,7 @@ const indexHTML = path.join(__dirname, '..', 'client', 'dist', 'index.html');
 let idCounter = 1001;
 
 app.use(express.static(DIST_DIR));
-app.use('/', express.static(indexHTML));
+app.use('/:mode', express.static(indexHTML));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
