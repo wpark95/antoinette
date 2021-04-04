@@ -1,5 +1,5 @@
 CREATE DATABASE antoinette;
-\c antoinette taebong;
+\c antoinette;
 CREATE SCHEMA antoinette;
 SET search_path TO antoinette;
 
@@ -31,11 +31,11 @@ CREATE TABLE tags (
   postId VARCHAR(10) NOT NULL REFERENCES posts(paddedId)
 );
 
-\COPY posts (id,paddedId,username,title,leftGame,rightGame,likeNum,viewNum) FROM '/Users/taebong/Desktop/antoinette/db/test_gen/postsDataTest.csv' DELIMITER ',' CSV HEADER;
+\COPY posts (id,paddedId,username,title,leftGame,rightGame,likeNum,viewNum) FROM '/home/will/Desktop/personal_projects/antoinette/db/test_gen/postsDataTest.csv' DELIMITER ',' CSV HEADER;
 
-\COPY comments (commentId,commenterName,commentBody,commentDate,commentLikeNum,postId) FROM '/Users/taebong/Desktop/antoinette/db/test_gen/commentsDataTest.csv' DELIMITER ',' CSV HEADER;
+\COPY comments (commentId,commenterName,commentBody,commentDate,commentLikeNum,postId) FROM '/home/will/Desktop/personal_projects/antoinette/db/test_gen/commentsDataTest.csv' DELIMITER ',' CSV HEADER;
 
-\COPY tags (tagId,tagTypeNum,tagName,postId) FROM '/Users/taebong/Desktop/antoinette/db/test_gen/tagsDataTest.csv' DELIMITER ',' CSV HEADER;
+\COPY tags (tagId,tagTypeNum,tagName,postId) FROM '/home/will/Desktop/personal_projects/antoinette/db/test_gen/tagsDataTest.csv' DELIMITER ',' CSV HEADER;
 
 ALTER TABLE posts ADD PRIMARY KEY (id);
 
@@ -45,6 +45,6 @@ ALTER TABLE tags ADD PRIMARY KEY (tagId);
 
 CREATE INDEX comments_postId_idx ON comments (postId);
 
-CREATE INDEX tags_postId_idx ON tags (tagId);
+CREATE INDEX tags_postId_idx ON tags (tagId); 
 
 CREATE INDEX posts_paddedId_idx ON posts (paddedId);

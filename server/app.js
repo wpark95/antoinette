@@ -1,6 +1,7 @@
 // ***** Dependencies *****
 const express = require('express');
 const path = require('path');
+const { addPadding } = require('../db/test_gen/dataHelperFunctions');
 const { pool } = require('../db/index.js');
 // require('dotenv').config();
 
@@ -8,6 +9,7 @@ const { pool } = require('../db/index.js');
 const app = express();
 const DIST_DIR = path.join(__dirname, '..', 'client', 'dist');
 const indexHTML = path.join(__dirname, '..', 'client', 'dist', 'index.html');
+let idCounter = 1001;
 
 app.use(express.static(DIST_DIR));
 app.use('/', express.static(indexHTML));
@@ -15,24 +17,46 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/textmode/:sortBy', (req, res) => {
-  const sql = 'SELECT * FROM antoinette.posts ORDER BY viewNum LIMIT 6';
+  const sql = 'SELECT * FROM antoinette.posts ORDER BY viewNum DESC LIMIT 6';
   const { sortBy } = req.params;
-  console.log('SORT BYYYYYYYYYYYYYYYYYYYYYYYY', sortBy);
 
-  pool.query(sql)
+  if (sortBy === 'popular') {
+    pool.query(sql)
+      .then((result) => {
+        res.status(200).send(result.rows);
+        console.log(result.rows);
+      })
+      .catch((error) => {
+        res.status(500).send();
+        console.log(error.stack);
+      });
+  }
+});
+
+app.post('/textmode/create', (req, res) => {
+  console.log(req.body);
+  const {
+    username, title, leftgame, rightgame,
+  } = req.body;
+
+  idCounter += 1;
+  const sql = `
+  INSERT INTO antoinette.posts (id,paddedid,username,title,leftgame,rightgame,likenum,viewnum) 
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+  RETURNING *;
+  `;
+  const values = [idCounter, addPadding(idCounter), username, title, leftgame, rightgame, 0, 0];
+
+  pool.query(sql, values)
+
     .then((result) => {
-      res.status(200).send(result.rows);
-      console.log(result.rows);
+      res.status(201).send();
+      console.log(result);
     })
     .catch((error) => {
       res.status(500).send();
-      console.log(error.stack);
+      console.log(error);
     });
-});
-
-app.post('/test/textinput', (req, res) => {
-  console.log(req.body);
-  res.status(201).send();
 });
 
 module.exports = app;

@@ -1,13 +1,15 @@
-import React from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React from 'react';
 
 const PopularSix = ({ data }) => {
-  const eachItem = data.map((eachData) => (
-    <div>
-      <h1>{eachData.id}</h1>
-      <h1>{eachData.paddedId}</h1>
-    </div>
+  const eachItem = data.map((eachData, index) => (
+    <li id="popular-six-list" key={eachData.id}>
+      <span id={`popular-six ${index + 1}`}>{eachData.paddedid}</span>
+      <span id={`popular-six ${index + 1}`}>{eachData.title}</span>
+      <span id={`popular-six ${index + 1}`}>{eachData.username}</span>
+      <span id={`popular-six ${index + 1}`}>{eachData.leftgame}</span>
+      <span id={`popular-six ${index + 1}`}>{eachData.rightgame}</span>
+      <span id={`popular-six ${index + 1}`}>{eachData.viewnum}</span>
+    </li>
   ));
 
   return <ul>{eachItem}</ul>;

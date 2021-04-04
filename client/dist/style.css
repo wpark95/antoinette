@@ -1,5 +1,7 @@
 /* ##########Landing Page########## */
-
+.App {
+    background-color: seagreen;
+}
 
 
 #landing-image {
@@ -48,4 +50,8 @@ nav {
 /* Header Links Color */
 li {
     color: white;
+}
+
+#popular-six {
+    color: blue;
 }
