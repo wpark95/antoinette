@@ -1,4 +1,4 @@
-const { Client, Pool } = require('pg');
+const { Pool } = require('pg');
 require('dotenv').config();
 
 const devDBUser = process.env.DB_DEV_USER;
@@ -16,11 +16,11 @@ const pool = new Pool({
 // the pool will emit an error on behalf of any idle clients
 // it contains if a backend error or network partition happens
 pool.on('error', (err, client) => {
-  console.error('Unexpected error on idle client', err);
+  console.error(`Unexpected error on idle ${client}}`, err);
   process.exit(-1);
 });
 pool.on('connect', () => {
-  // pool.query('SET search_path TO sdc;');
+  pool.query(`SET search_path TO ${devDBDatabase};`);
   console.log(`
   
   
@@ -51,7 +51,8 @@ oo $ $ "$      o$$$$$$$$$    $$$$$$$$$$$$$    $$$$$$$$$o       $$$o$$o$
                                      $$$$$$$$$$"
                                       "$$$""""
                   
-                  PostgreSQL에 연결 성공! Host는 ${devDBHost} 입니다.
+                  Successfully connected to PostgreSQL!
+                  DB set to use : ${devDBDatabase} (MOO YA HO)
   `);
 });
 

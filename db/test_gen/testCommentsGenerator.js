@@ -1,8 +1,9 @@
+/* eslint-disable camelcase */
 const { Readable } = require('stream');
 const fs = require('fs');
 const { name, lorem } = require('faker');
 const {
-  targetListingDataNum, addPadding, randomDate, randomNumber, randomTrueOrFalse,
+  targetListingDataNum, randomDate, randomNumber, randomTrueOrFalse,
 } = require('./dataHelperFunctions.js');
 
 // :::::CSV Generator:::::
@@ -10,7 +11,7 @@ const {
 const writableStream = fs.createWriteStream('./db/test_gen/commentsDataTest.csv');
 
 // Write columns
-writableStream.write('commentId,commenterName,commentBody,commentDate,commentLikeNum,postId\n', 'utf8');
+writableStream.write('comment_id,commenter_name,comment_body,comment_date,comment_like_num,post_id\n', 'utf8');
 
 // Create dummy comments generator
 
@@ -19,15 +20,9 @@ function * generateComments(targetNum) {
   const hasComments = randomTrueOrFalse();
   let commentSize = 0;
   let commentCounter = 0;
-  let postID = 1;
+  let postIdCounter = 1;
 
-  while (postID <= targetNum) {
-    const commentId = commentIndex;
-    const commenterName = name.firstName();
-    const commentBody = lorem.paragraph(1);
-    const commentDate = randomDate(new Date(2014, 0, 1), new Date());
-    const commentLikeNum = randomNumber(0, 100);
-    const postId = addPadding(postID);
+  while (postIdCounter <= targetNum) {
     commentIndex += 1;
     if (hasComments) {
       commentSize = randomNumber(1, 5);
@@ -36,11 +31,17 @@ function * generateComments(targetNum) {
       commentCounter += 1;
     }
     if (commentCounter === commentSize) {
-      postID += 1;
+      postIdCounter += 1;
       commentCounter = 0;
     }
-    if (postID <= targetNum) {
-      yield `${commentId},${commenterName},${commentBody},${commentDate},${commentLikeNum},${postId}\n`;
+    const comment_id = commentIndex;
+    const commenter_name = name.firstName();
+    const comment_body = lorem.paragraph(1);
+    const comment_date = randomDate(new Date(2014, 0, 1), new Date());
+    const comment_like_num = randomNumber(0, 100);
+    const post_id = postIdCounter;
+    if (postIdCounter <= targetNum) {
+      yield `${comment_id},${commenter_name},${comment_body},${comment_date},${comment_like_num},${post_id}\n`;
     }
   }
 }
