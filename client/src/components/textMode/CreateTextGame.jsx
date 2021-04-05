@@ -45,10 +45,10 @@ class CreateGame extends React.Component {
       rightgame,
     })
       .then((res) => {
-        console.log(res);
+        console.log('Input Post Result From CreateTextGame.jsx : ', res);
       })
       .catch((err) => {
-        console.log(err);
+        console.log('Input Post Error From CreateTextGame.jsx : ', err);
       });
   }
 
@@ -57,15 +57,15 @@ class CreateGame extends React.Component {
       <div>
         <Header />
         <h1>Create Text Game</h1>
-        <h2>제목을 넣어야지 이 친구야!</h2>
+        <h2>Title</h2>
         <input type="title" onChange={this.titleInputHandler} />
-        <h2>USERNAME</h2>
+        <h2>Username</h2>
         <input type="username" onChange={this.usernameInputHandler} />
         <br />
-        <h2>LEFT GAME</h2>
+        <h2>Left Game</h2>
         <input type="leftGame" onChange={this.leftGameKeyPressHandler} />
         <br />
-        <h2>RIGHT GAME</h2>
+        <h2>Right Game</h2>
         <input type="rightGame" onChange={this.rightGameKeyPressHandler} />
         <input
           type="button"

@@ -1,0 +1,17 @@
+.text-main-controllers {
+    display: flex;
+}
+
+/* ===== Create Game Button ===== */
+#create-game-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+#create-game-btn:hover {
+    background-color: #3e8e41;
+}

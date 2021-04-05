@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const PopularSix = ({ data }) => {
+const SortedTopPosts = ({ data }) => {
   const eachItem = data.map((eachData, index) => (
     <li id="popular-six-list" key={eachData.post_id}>
       <span id={`popular-six ${index + 1}`}>{eachData.post_id}</span>
@@ -15,4 +16,22 @@ const PopularSix = ({ data }) => {
 
   return <ul id="popular-six-ul">{eachItem}</ul>;
 };
-export default PopularSix;
+
+SortedTopPosts.defaultProps = {
+  data: PropTypes.array,
+};
+SortedTopPosts.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      post_id: PropTypes.number,
+      title: PropTypes.string,
+      username: PropTypes.string,
+      left_game: PropTypes.string,
+      right_game: PropTypes.string,
+      view_num: PropTypes.number,
+      like_num: PropTypes.number,
+    }),
+  ),
+};
+
+export default SortedTopPosts;
