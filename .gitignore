@@ -1,4 +1,4 @@
-# Log file
+# Log file #
 *.log
 
 # Package Files #
@@ -10,10 +10,12 @@
 *.tar.gz
 *.rar
 
+
 node_modules
-.env
+
+# .env Files #
+*.env
 
 # .sql Files
-DB_DEV_PW
-postgres.sql
-.csv
+*.sql
+*.csv
