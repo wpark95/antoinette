@@ -1,8 +1,9 @@
+/* eslint-disable camelcase */
 const { Readable } = require('stream');
 const fs = require('fs');
 // const { lorem } = require('faker');
 const {
-  targetListingDataNum, addPadding, randomTag, randomTrueOrFalse,
+  targetListingDataNum, randomTag, randomTrueOrFalse,
 } = require('./dataHelperFunctions.js');
 
 // :::::CSV Generator:::::
@@ -10,7 +11,7 @@ const {
 const writableStream = fs.createWriteStream('./db/test_gen/tagsDataTest.csv');
 
 // Write columns
-writableStream.write('tagId,tagTypeNum,tagName,postId\n', 'utf8');
+writableStream.write('tag_id,tag_type_id,tag_name,post_id\n', 'utf8');
 
 // Create dummy tags generator
 function * generateTags(targetDataNum) {
@@ -33,15 +34,16 @@ function * generateTags(targetDataNum) {
     }
     tagTracker.push(currentTag[0]);
 
-    const tagId = tagIndex;
-    const tagTypeNum = currentTag[0] + 1;
-    const tagName = currentTag[1];
-    const postId = addPadding(postIndex);
+    const tag_id = tagIndex;
+    const tag_type_id = currentTag[0] + 1;
+    const tag_name = currentTag[1];
+    const post_id = postIndex;
+
     tagCounter += 1;
     tagIndex += 1;
     currentTag = randomTag();
     if (postIndex <= targetListingDataNum) {
-      yield `${tagId},${tagTypeNum},${tagName},${postId}\n`;
+      yield `${tag_id},${tag_type_id},${tag_name},${post_id}\n`;
     }
   }
 }
