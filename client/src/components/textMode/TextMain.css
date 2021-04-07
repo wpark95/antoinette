@@ -1,3 +1,7 @@
+.text-main {
+    background-color: darkolivegreen;
+}
+
 .text-main-controllers {
     display: flex;
 }
