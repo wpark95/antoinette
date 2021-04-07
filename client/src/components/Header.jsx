@@ -3,9 +3,10 @@ import React from 'react';
 import {
   NavLink,
 } from 'react-router-dom';
+import './Header.css';
 
 const header = () => (
-  <div>
+  <div className="header-container">
     <nav>
       <ul className="nav-list">
         <li>

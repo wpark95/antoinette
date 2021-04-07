@@ -7,13 +7,13 @@ import {
 import LandingPage from './LandingPage';
 import TextMain from './textMode/TextMain';
 import ImageMain from './imageMode/ImageMain';
-import CreateGame from './textMode/CreateTextGame';
+import CreateTextGame from './textMode/CreateTextGame';
 
 const app = () => (
   <Router>
     <div className="App">
       <Switch>
-        <Route path="/textmode/create" component={CreateGame} />
+        <Route path="/textmode/create" component={CreateTextGame} />
         <Route path="/textmode" component={TextMain} />
         <Route path="/imagemode" component={ImageMain} />
         <Route path="/" component={LandingPage} />

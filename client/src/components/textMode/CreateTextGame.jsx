@@ -11,11 +11,12 @@ class CreateGame extends React.Component {
       leftgame: '',
       rightgame: '',
     };
-    this.sendInputDataOnSubmit = this.sendInputDataOnSubmit.bind(this);
+    this.postInputDataOnSubmit = this.postInputDataOnSubmit.bind(this);
     this.titleInputHandler = this.titleInputHandler.bind(this);
     this.usernameInputHandler = this.usernameInputHandler.bind(this);
     this.leftGameKeyPressHandler = this.leftGameKeyPressHandler.bind(this);
     this.rightGameKeyPressHandler = this.rightGameKeyPressHandler.bind(this);
+    this.clearInputDataOnSubmit = this.clearInputDataOnSubmit.bind(this);
   }
 
   usernameInputHandler(e) {
@@ -34,7 +35,7 @@ class CreateGame extends React.Component {
     this.setState({ rightgame: e.target.value });
   }
 
-  sendInputDataOnSubmit() {
+  postInputDataOnSubmit() {
     const {
       username, title, leftgame, rightgame,
     } = this.state;
@@ -50,28 +51,45 @@ class CreateGame extends React.Component {
       .catch((err) => {
         console.log('Input Post Error From CreateTextGame.jsx : ', err);
       });
+    this.clearInputDataOnSubmit();
+  }
+
+  clearInputDataOnSubmit() {
+    this.setState({
+      username: '',
+      title: '',
+      leftgame: '',
+      rightgame: '',
+    });
   }
 
   render() {
+    const {
+      username, title, leftgame, rightgame,
+    } = this.state;
+
     return (
       <div>
         <Header />
         <h1>Create Text Game</h1>
-        <h2>Title</h2>
-        <input type="title" onChange={this.titleInputHandler} />
-        <h2>Username</h2>
-        <input type="username" onChange={this.usernameInputHandler} />
-        <br />
-        <h2>Left Game</h2>
-        <input type="leftGame" onChange={this.leftGameKeyPressHandler} />
-        <br />
-        <h2>Right Game</h2>
-        <input type="rightGame" onChange={this.rightGameKeyPressHandler} />
-        <input
-          type="button"
-          value="Submit"
-          onClick={this.sendInputDataOnSubmit}
-        />
+        <form>
+          <h2>Title</h2>
+          <input type="title" value={title} onChange={this.titleInputHandler} />
+          <h2>Username</h2>
+          <input type="username" value={username} onChange={this.usernameInputHandler} />
+          <br />
+          <h2>Left Game</h2>
+          <input type="leftGame" value={leftgame} onChange={this.leftGameKeyPressHandler} />
+          <br />
+          <h2>Right Game</h2>
+          <input type="rightGame" value={rightgame} onChange={this.rightGameKeyPressHandler} />
+          <input
+            type="button"
+            value="Submit"
+            onClick={this.postInputDataOnSubmit}
+          />
+        </form>
+
       </div>
     );
   }
