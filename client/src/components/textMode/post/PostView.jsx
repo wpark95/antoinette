@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../Header';
 
-const PostView = ({ location }) => (
+const PostView = ({ history, location }) => (
   <div className="text-main">
     <Header />
     <h1>Single Post View</h1>
+    <button type="button" onClick={() => history.goBack()}>Back To Menu</button>
     <h2>{location.state.id}</h2>
     <h2>{location.state.username}</h2>
     <h2>
@@ -28,8 +29,12 @@ const PostView = ({ location }) => (
 
 PostView.defaultProps = {
   location: PropTypes.object,
+  history: PropTypes.object,
 };
 PostView.propTypes = {
+  history: PropTypes.shape({
+    goBack: PropTypes.func,
+  }),
   location: PropTypes.shape({
     state: PropTypes.shape({
       id: PropTypes.number,

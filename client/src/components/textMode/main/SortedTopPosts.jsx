@@ -22,7 +22,6 @@ const SortedTopPosts = ({ data }) => {
           USERNAME :
           {eachData.username}
         </span>
-        {/* <br /> */}
         <span id={`top-six ${index + 1}`}>
           {eachData.left_game}
             &nbsp;VS&nbsp;
@@ -32,7 +31,6 @@ const SortedTopPosts = ({ data }) => {
           VIEWS :
           {eachData.view_num}
         </span>
-        {/* <br /> */}
         <span id={`top-six ${index + 1}`}>
           LIKES :
           {eachData.like_num}
