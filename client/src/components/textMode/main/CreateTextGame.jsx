@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Header from '../Header';
+import Header from '../../Header';
 
 class CreateGame extends React.Component {
   constructor(props) {

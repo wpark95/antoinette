@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Header from '../Header';
-import TextMainPosts from './mainPosts/TextMainPosts';
+import TextMainPosts from './main/TextMainPosts';
 import './TextMain.css';
 
 class TextMain extends React.Component {
