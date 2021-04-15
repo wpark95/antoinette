@@ -5,9 +5,6 @@ import Header from '../../Header';
 const PostView = ({ history, location }) => (
   <div className="text-main">
     <Header />
-    {console.log(history)}
-    {console.log(location)}
-
     <h1>Single Post View</h1>
     <button type="button" onClick={() => history.goBack()}>Back To Menu</button>
     <h2>
