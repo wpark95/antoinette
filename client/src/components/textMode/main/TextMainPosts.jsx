@@ -15,15 +15,17 @@ TextMainPosts.defaultProps = {
   data: PropTypes.array,
 };
 TextMainPosts.propTypes = {
-  data: PropTypes.shape({
-    post_id: PropTypes.number,
-    title: PropTypes.string,
-    username: PropTypes.string,
-    left_game: PropTypes.string,
-    right_game: PropTypes.string,
-    view_num: PropTypes.number,
-    like_num: PropTypes.number,
-  }),
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      post_id: PropTypes.number,
+      title: PropTypes.string,
+      username: PropTypes.string,
+      left_game: PropTypes.string,
+      right_game: PropTypes.string,
+      view_num: PropTypes.number,
+      like_num: PropTypes.number,
+    }),
+  ),
 };
 
 export default TextMainPosts;

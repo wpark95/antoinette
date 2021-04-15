@@ -2,7 +2,7 @@ import React from 'react';
 
 const ErrorPage = () => (
   <div className="error-page">
-    <h1>ERROR PAGE</h1>
+    <h1>ERROR! THIS URL DOES NOT EXIST</h1>
   </div>
 );
 
