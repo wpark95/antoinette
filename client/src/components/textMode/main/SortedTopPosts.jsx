@@ -7,7 +7,7 @@ const SortedTopPosts = ({ data }) => {
     <li id="top-six-list" key={eachData.post_id}>
       <Link
         to={{
-          pathname: `/textmode/${eachData.post_id}`,
+          pathname: `/textmode/view/${eachData.post_id}`,
           state: {
             id: eachData.post_id,
             username: eachData.username,
@@ -46,17 +46,15 @@ SortedTopPosts.defaultProps = {
   data: PropTypes.array,
 };
 SortedTopPosts.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      post_id: PropTypes.number,
-      title: PropTypes.string,
-      username: PropTypes.string,
-      left_game: PropTypes.string,
-      right_game: PropTypes.string,
-      view_num: PropTypes.number,
-      like_num: PropTypes.number,
-    }),
-  ),
+  data: PropTypes.shape({
+    post_id: PropTypes.number,
+    title: PropTypes.string,
+    username: PropTypes.string,
+    left_game: PropTypes.string,
+    right_game: PropTypes.string,
+    view_num: PropTypes.number,
+    like_num: PropTypes.number,
+  }),
 };
 
 export default SortedTopPosts;

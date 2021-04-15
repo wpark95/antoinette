@@ -5,10 +5,19 @@ import Header from '../../Header';
 const PostView = ({ history, location }) => (
   <div className="text-main">
     <Header />
+    {console.log(history)}
+    {console.log(location)}
+
     <h1>Single Post View</h1>
     <button type="button" onClick={() => history.goBack()}>Back To Menu</button>
-    <h2>{location.state.id}</h2>
-    <h2>{location.state.username}</h2>
+    <h2>
+      POST ID # :
+      {location.state.id}
+    </h2>
+    <h2>
+      USERNAME :
+      {location.state.username}
+    </h2>
     <h2>
       {location.state.leftgame}
       {' '}
@@ -17,11 +26,11 @@ const PostView = ({ history, location }) => (
       {location.state.leftgame}
     </h2>
     <h2>
-      VIEWS:
+      VIEWS :
       {location.state.views}
     </h2>
     <h2>
-      LIKES:
+      LIKES :
       {location.state.likes}
     </h2>
   </div>

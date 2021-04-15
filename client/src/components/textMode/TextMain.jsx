@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import PropTypes from 'prop-types';
+
 import Header from '../Header';
 import TextMainPosts from './main/TextMainPosts';
 import './TextMain.css';
@@ -10,7 +13,6 @@ class TextMain extends React.Component {
     super(props);
     this.state = {
       dropdown: false,
-      sortBy: 'popular',
       dataToDisplay: [],
     };
     this.getTopSix = this.getTopSix.bind(this);
@@ -23,33 +25,34 @@ class TextMain extends React.Component {
   }
 
   getTopSix() {
-    const { sortBy } = this.state;
+    const { location } = this.props;
+    console.log(location);
 
-    axios
-      .get(`/textmode/${sortBy}`)
+    let { mode } = queryString.parse(location.search);
+    if (mode === undefined) {
+      mode = 'popular';
+    }
+    axios.get(`/textmode/${mode}`)
       .then(({ data }) => {
-        console.log('Data Received By TextMainPosts.jsx : ', data);
         this.setState({
           dataToDisplay: data,
         });
       })
-      .catch((err) => {
-        console.log('ERROR From TextMainPosts.jsx : ', err);
+      .catch((error) => {
+        console.error('ERROR from TextMainPosts.jsx : ', error);
       });
   }
 
   showDropdown(e) {
     e.preventDefault();
-
     this.setState({
       dropdown: true,
     });
   }
 
-  closeDropdown(viewSelect) {
+  closeDropdown() {
     this.setState({
       dropdown: false,
-      sortBy: viewSelect,
     }, () => {
       this.getTopSix();
     });
@@ -57,7 +60,6 @@ class TextMain extends React.Component {
 
   render() {
     const { dataToDisplay, dropdown } = this.state;
-
     return (
       <div className="text-main">
         <Header />
@@ -67,9 +69,9 @@ class TextMain extends React.Component {
             {
                 dropdown ? (
                   <div className="dropdown-content">
-                    <button type="button" className="drop-option" onClick={() => this.closeDropdown('popular')}>MOST VIEW</button>
-                    <button type="button" className="drop-option" onClick={() => this.closeDropdown('mostLike')}>MOST LIKE</button>
-                    <button type="button" className="drop-option" onClick={() => this.closeDropdown('recent')}>MOST RECENT</button>
+                    <Link to="/textmode/view?mode=popular" onClick={() => this.closeDropdown('popular')}> LIKES </Link>
+                    <Link to="/textmode/view?mode=mostLike" onClick={() => this.closeDropdown('mostLike')}> VIEWS </Link>
+                    <Link to="/textmode/view?mode=recent" onClick={() => this.closeDropdown('recent')}> RECENT </Link>
                   </div>
                 ) : (
                   null
@@ -90,5 +92,20 @@ class TextMain extends React.Component {
     );
   }
 }
+
+TextMain.defaultProps = {
+  location: PropTypes.object,
+};
+
+TextMain.propTypes = {
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    key: PropTypes.string,
+    pathname: PropTypes.string,
+    search: PropTypes.string,
+    state: PropTypes.shape({
+    }),
+  }),
+};
 
 export default TextMain;
