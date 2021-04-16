@@ -1,23 +1,26 @@
-#logo {
-    max-width: 70%;
-    max-height: 70%;
-}
-
-nav {
+.header-container {
+    background-color: rgb(44, 58, 21);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 10vh;
-    max-height: 25vh;
-    background-color: rgb(83, 62, 59);
-    color: white;
+    justify-content: space-evenly;
 }
 
 .nav-list {
-    width: 50%;
     display: flex;
-    justify-content: space-around;
+    min-height: 10vh;
+    max-height: 25vh;
     align-items: center;
     list-style-type: none;
+}
+
+#logo {
+    max-width: 70%;
+    max-height: 70%;
+    padding-right: 100%;
+}
+
+/* Header Links (Image Mode button and Text Mode button) */
+.nav-list .header-btn-mode a {
+    text-decoration: none;
+    color: white;
     padding-right: 20px;
 }
