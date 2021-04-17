@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Header from '../Header';
+import Header from '../../Header';
 
 class CreateGame extends React.Component {
   constructor(props) {
@@ -14,8 +14,8 @@ class CreateGame extends React.Component {
     this.postInputDataOnSubmit = this.postInputDataOnSubmit.bind(this);
     this.titleInputHandler = this.titleInputHandler.bind(this);
     this.usernameInputHandler = this.usernameInputHandler.bind(this);
-    this.leftGameKeyPressHandler = this.leftGameKeyPressHandler.bind(this);
-    this.rightGameKeyPressHandler = this.rightGameKeyPressHandler.bind(this);
+    this.leftGameInputHandler = this.leftGameInputHandler.bind(this);
+    this.rightGameInputHandler = this.rightGameInputHandler.bind(this);
     this.clearInputDataOnSubmit = this.clearInputDataOnSubmit.bind(this);
   }
 
@@ -27,11 +27,11 @@ class CreateGame extends React.Component {
     this.setState({ title: e.target.value });
   }
 
-  leftGameKeyPressHandler(e) {
+  leftGameInputHandler(e) {
     this.setState({ leftgame: e.target.value });
   }
 
-  rightGameKeyPressHandler(e) {
+  rightGameInputHandler(e) {
     this.setState({ rightgame: e.target.value });
   }
 
@@ -79,17 +79,16 @@ class CreateGame extends React.Component {
           <input type="username" value={username} onChange={this.usernameInputHandler} />
           <br />
           <h2>Left Game</h2>
-          <input type="leftGame" value={leftgame} onChange={this.leftGameKeyPressHandler} />
+          <input type="leftGame" value={leftgame} onChange={this.leftGameInputHandler} />
           <br />
           <h2>Right Game</h2>
-          <input type="rightGame" value={rightgame} onChange={this.rightGameKeyPressHandler} />
+          <input type="rightGame" value={rightgame} onChange={this.rightGameInputHandler} />
           <input
             type="button"
             value="Submit"
             onClick={this.postInputDataOnSubmit}
           />
         </form>
-
       </div>
     );
   }

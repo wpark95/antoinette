@@ -7,24 +7,22 @@ import './Header.css';
 
 const header = () => (
   <div className="header-container">
-    <nav>
-      <ul className="nav-list">
-        <li>
-          <NavLink to="/">
-            <img id="logo" src="/anlogo.png" alt="" />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/imagemode">
-            Image Mode
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/textmode">
-            Text Mode
-          </NavLink>
-        </li>
-      </ul>
+    <nav className="nav-list">
+      <li className="header-btn-home">
+        <NavLink to="/">
+          <img id="logo" src="/anlogo.png" alt="" />
+        </NavLink>
+      </li>
+      <li className="header-btn-mode">
+        <NavLink to="/imagemode">
+          Image Mode
+        </NavLink>
+      </li>
+      <li className="header-btn-mode">
+        <NavLink to="/textmode">
+          Text Mode
+        </NavLink>
+      </li>
     </nav>
   </div>
 );
