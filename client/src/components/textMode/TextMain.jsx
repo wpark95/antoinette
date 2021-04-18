@@ -71,6 +71,7 @@ class TextMain extends React.Component {
 
   render() {
     const { dataToDisplay, dropdown } = this.state;
+    const { match } = this.props;
 
     return (
       <div className="text-main">
@@ -95,10 +96,9 @@ class TextMain extends React.Component {
               <button id="create-game-btn" type="button">Create Game!</button>
             </Link>
           </div>
-
         </div>
         <div className="text-main-posts">
-          <TextMainPosts data={dataToDisplay} />
+          <TextMainPosts data={dataToDisplay} match={match} />
         </div>
       </div>
     );
@@ -108,7 +108,6 @@ class TextMain extends React.Component {
 TextMain.defaultProps = {
   location: PropTypes.object,
 };
-
 TextMain.propTypes = {
   location: PropTypes.shape({
     hash: PropTypes.string,
@@ -117,6 +116,18 @@ TextMain.propTypes = {
     search: PropTypes.string,
     state: PropTypes.shape({
     }),
+  }),
+};
+TextMain.defaultProps = {
+  match: PropTypes.array,
+};
+TextMain.propTypes = {
+  match: PropTypes.shape({
+    isExact: PropTypes.bool,
+    params: PropTypes.shape({
+    }),
+    path: PropTypes.string,
+    url: PropTypes.string,
   }),
 };
 

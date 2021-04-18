@@ -9,13 +9,17 @@ const PostView = ({ history, location }) => (
     <button type="button" onClick={() => history.goBack()}>Back To Menu</button>
     <h2>
       POST ID # :
+      {' '}
       {location.state.id}
     </h2>
     <h2>
       USERNAME :
+      {' '}
       {location.state.username}
     </h2>
     <h2>
+      CONTENT :
+      {' '}
       {location.state.leftgame}
       {' '}
       VS
@@ -24,10 +28,12 @@ const PostView = ({ history, location }) => (
     </h2>
     <h2>
       VIEWS :
+      {' '}
       {location.state.views}
     </h2>
     <h2>
       LIKES :
+      {' '}
       {location.state.likes}
     </h2>
   </div>
