@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const SortedTopPosts = ({ data, match }) => {
   const { path } = match;
   const { url } = useRouteMatch();
-  console.log('HELLOOOO', url);
+  console.log('URL : ', url);
 
   const eachItem = data.map((eachData) => (
     <li id={`text-post id-${eachData.post_id}`} key={eachData.post_id}>

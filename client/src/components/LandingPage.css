@@ -10,11 +10,6 @@
 }
 
 .landing-logo {
-    max-width: 70%;
-    max-height: 70%;
-}
-
-a {
-    display: flex;
-    justify-content: center;
+    max-width: 360px;
+    max-height: 360px;
 }
