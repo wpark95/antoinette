@@ -55,6 +55,11 @@
     z-index: 1;
 }
 
+.dropdown-content a {
+    display: flex;
+    justify-content: center;
+}
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
     background-color: #f1f1f1;
