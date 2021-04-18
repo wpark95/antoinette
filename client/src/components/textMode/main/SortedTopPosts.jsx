@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const SortedTopPosts = ({ data }) => {
-  const eachItem = data.map((eachData, index) => (
-    <li id="top-six-list" key={eachData.post_id}>
+const SortedTopPosts = ({ data, match }) => {
+  const { path } = match;
+  const { url } = useRouteMatch();
+  console.log('HELLOOOO', url);
+
+  const eachItem = data.map((eachData) => (
+    <li id={`text-post id-${eachData.post_id}`} key={eachData.post_id}>
       <Link
         to={{
-          pathname: `/textmode/view/${eachData.post_id}`,
+          pathname: `${path}view/${eachData.post_id}`,
           state: {
             id: eachData.post_id,
             username: eachData.username,
@@ -18,28 +22,38 @@ const SortedTopPosts = ({ data }) => {
           },
         }}
       >
-        <span id={`top-six ${index + 1}`}>
+        <span>
           USERNAME :
+          {' '}
           {eachData.username}
         </span>
-        <span id={`top-six ${index + 1}`}>
+        <span>
+          &nbsp;
+          CONTENT :
+          {' '}
           {eachData.left_game}
-            &nbsp;VS&nbsp;
+          {' '}
+          VS
+          {' '}
           {eachData.right_game}
         </span>
-        <span id={`top-six ${index + 1}`}>
+        <span>
+          &nbsp;
           VIEWS :
+          {' '}
           {eachData.view_num}
         </span>
-        <span id={`top-six ${index + 1}`}>
+        <span>
+          &nbsp;
           LIKES :
+          {' '}
           {eachData.like_num}
         </span>
       </Link>
     </li>
   ));
 
-  return <ul id="top-six-ul">{eachItem}</ul>;
+  return <ul id="sorted-post-ul">{eachItem}</ul>;
 };
 
 SortedTopPosts.defaultProps = {
@@ -57,6 +71,18 @@ SortedTopPosts.propTypes = {
       like_num: PropTypes.number,
     }),
   ),
+};
+SortedTopPosts.defaultProps = {
+  match: PropTypes.array,
+};
+SortedTopPosts.propTypes = {
+  match: PropTypes.shape({
+    isExact: PropTypes.bool,
+    params: PropTypes.shape({
+    }),
+    path: PropTypes.string,
+    url: PropTypes.string,
+  }),
 };
 
 export default SortedTopPosts;

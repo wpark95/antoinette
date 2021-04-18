@@ -5,10 +5,10 @@ import './TextMainPosts.css';
 
 // This component might not be needed in the future
 
-const TextMainPosts = ({ data }) => (
-  <div>
-    <SortedTopPosts data={data} />
-  </div>
+const TextMainPosts = ({ data, match }) => (
+  <>
+    <SortedTopPosts data={data} match={match} />
+  </>
 );
 
 TextMainPosts.defaultProps = {
@@ -26,6 +26,18 @@ TextMainPosts.propTypes = {
       like_num: PropTypes.number,
     }),
   ),
+};
+TextMainPosts.defaultProps = {
+  match: PropTypes.array,
+};
+TextMainPosts.propTypes = {
+  match: PropTypes.shape({
+    isExact: PropTypes.bool,
+    params: PropTypes.shape({
+    }),
+    path: PropTypes.string,
+    url: PropTypes.string,
+  }),
 };
 
 export default TextMainPosts;

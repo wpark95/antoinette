@@ -19,9 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/textmode/:sortBy', (req, res) => {
   const { sortBy } = req.params;
-  const getTopSixMostViewsQuery = 'SELECT * FROM antoinette.posts ORDER BY view_num DESC LIMIT 6';
-  const getTopSixMostLikesQuery = 'SELECT * FROM antoinette.posts ORDER BY like_num DESC LIMIT 6';
-  const getTopSixMostRecentQuery = 'SELECT * FROM antoinette.posts ORDER BY post_id DESC LIMIT 6';
+  const getTopSixMostViewsQuery = 'SELECT * FROM antoinette.posts ORDER BY view_num DESC LIMIT 25';
+  const getTopSixMostLikesQuery = 'SELECT * FROM antoinette.posts ORDER BY like_num DESC LIMIT 25';
+  const getTopSixMostRecentQuery = 'SELECT * FROM antoinette.posts ORDER BY post_id DESC LIMIT 25';
 
   if (sortBy === 'popular') {
     pool.query(getTopSixMostViewsQuery)
